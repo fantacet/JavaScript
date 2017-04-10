@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>05DateObject.html</title>
+    <script>
+        //var d = new Date();
+        //var d = new Date("2017/4/6");
+        var d = new Date(2017, 3, 6);
+        var theYear = d.getFullYear() - 1911;
+        var theMonth = d.getMonth() + 1;
+        var theDate = d.getDate();
+        //document.write(d);
+        document.write("民國" + theYear + "年" + theMonth + "月" + theDate + "日" + "<br>");
+
+        var y = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
+        //alert(y);
+        var exp = new Date();
+      
+        exp.setTime(exp.getTime() - (24 * 60 * 60 * 1000));
+        alert(exp);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

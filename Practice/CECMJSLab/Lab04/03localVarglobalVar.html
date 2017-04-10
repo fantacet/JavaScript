@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>03localVarglobalVar.html</title>
+    <script>
+        var a = 5;
+        function show() {
+           var a = 7;
+            document.write("local:" + a + "<br>");
+        }
+        show()
+        document.write("global:" + a + "<br>");
+        //========================================
+        var b = 5;
+        function show() {
+            b = 7;
+            document.write("local:" + b + "<br>");
+        }
+        show()
+        document.write("global:" + b + "<br>");
+        //========================================
+    </script>
+</head>
+<body>
+
+</body>
+</html>

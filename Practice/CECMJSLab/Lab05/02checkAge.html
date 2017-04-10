@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>02checkAge.html</title>
+    <script>
+        function checkAge() {
+            //DOM，getElementById，最常用
+            //var ageObj = document.getElementById("text1");
+            //alert(ageObj.value);
+
+            //DOM，getElementsByName，會抓到類陣列，再依索引值指定特定元素
+            //var ageObj = document.getElementsByName("text2")[0].value;
+            //alert(ageObj);
+
+            //BOM，指定表單名稱
+            //var ageObj = document.form1.text2.value;
+            //alert(ageObj);
+
+            //BOM，抓到表單集合，依索引值指定特定元素
+            var ageObj = document.forms[0].text2.value;
+            alert(ageObj);
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        Age:<input type="text" id="text1" name="text2" size="3" maxlength="3" />
+        <br />
+        <input type="button" value="checkAge" onclick="checkAge()" />
+    </form>
+</body>
+</html>

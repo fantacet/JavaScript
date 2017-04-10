@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>10formObject.html</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("idbutton").onclick = checkf;
+            document.getElementById("idsubmit").onclick = submitf;
+        };
+        function checkf() {
+            var elems = document.forms[0].elements;
+            var alertstr = "";
+            for (var i = 0; i < elems.length; i++) {
+                alertstr += elems[i].tagName + "\n"
+            }
+            alert(alertstr);
+
+        }
+        function submitf() {
+           if (document.getElementsByName("txtName")[0].value=="") {
+               alert("請輸入姓名");
+            }
+           else {
+               document.forms[0].submit();
+           }
+        }
+    </script>
+</head>
+<body>
+    <form action="get.aspx" method="post">
+			name:<input type="text" name="txtName" value="abc" /><span id="idsp"></span><br/>
+			<input type="checkbox" name="hobby" checked="checked" value="reading"/>reading
+			<input type="checkbox" name="hobby" value="game"/>game
+			<input type="checkbox" name="hobby" value="sleep"/>sleep
+			<br/>
+            <input type="submit" value="送出" />	
+            <input id="idbutton" type="button" value="check" />
+        <input id="idreset" type="reset" value="reset" />
+			<input id="idsubmit" type="button" value="submit" />
+	</form>
+</body>
+</html>

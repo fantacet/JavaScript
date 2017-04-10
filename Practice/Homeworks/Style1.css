@@ -1,0 +1,96 @@
+@font-face {
+    font-family: Abel;
+    src: url('Fonts/Abel.ttf');
+}
+
+body {
+    background-color: #ffde83;
+    font-family: Abel, Helvetica, sans-serif, '標楷體';
+    font-size: 24px;
+    background-image: url('Images/background.jpg');
+}
+
+header {
+    width: 80%;
+    background-color: rgba(200, 200, 100, 0.5);
+    color: #606010;
+    margin: auto;
+    padding: 0 10px;
+    overflow: auto;
+}
+
+hgroup {
+    width: 30%;
+    float: left;
+}
+
+nav {
+    width: 70%;
+    float: right;
+}
+
+
+
+ul {
+    list-style-position:inside;
+    list-style-type: none;
+    list-style-image: url('Images/item.png');
+}
+
+    ul li {
+        /*background-color: rgba(200,200,50,0.5);*/
+        width: 15%;
+        float: left;
+        margin-right: 5px;
+        
+    }
+
+hgroup h1 {
+    line-height: 1em;
+    margin: 10px auto;
+}
+
+hgroup h2 {
+    line-height: 1em;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+section {
+    width: 80%;
+    background-color: rgba(200, 200, 100, 0.5);
+    /*background-image: url('Images/texture.png');*/
+    margin: auto;
+    overflow: auto;
+    padding: 10px;
+}
+
+.seperator {
+    text-align:center;
+    background-color: transparent;
+}
+
+.seperator img{
+    width:13%;
+}
+
+.HWTitle{
+    text-align:center;
+}
+
+input{
+    line-height:30px;
+}
+
+a {
+    text-decoration-line: none;
+    color: green;
+}
+
+    a:visited {
+        color: darkgreen;
+    }
+
+    a:hover {
+        background-color: rgba(220, 255, 180, 0.5);
+    }

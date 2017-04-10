@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>02checkAge.html</title>
+    <script>
+        function checkAge() {
+            var theAgeObj = document.getElementById("idAge");
+            //alert(theAgeObj);  //[object HTMLInputElement]
+            //alert(typeof theAgeObj);  //object
+
+            var theAgeObjVal = theAgeObj.value;
+            //alert(theAgeObjVal);  //123
+            //alert(typeof theAgeObjVal);  //string
+
+            var theAge = document.getElementById("idAge").value;
+            
+            var theAgeObjs = document.getElementsByName("txtAge");
+            //alert(theAgeObjs);//[object NodeList]
+            var theAgeObj = document.getElementsByName("txtAge")[0];
+            //alert(theAgeObj); //[object HTMLInputElement]
+            var theAge = document.getElementsByName("txtAge")[0].value;
+            //var theAge = document.forms[0].txtAge.value;
+            //var theAge = document.myform.txtAge.value;
+            //alert(theAge);
+
+            if (isNaN(theAge))
+                alert("please input number 0-9!!");
+            else
+                alert("Age=" + theAge);
+
+
+        }
+    </script>
+</head>
+<body>
+    <form name="myform">
+        Age:<input type="text" name="txtAge" id="idAge" size="3" maxlength="3" value="123" /><!-- create object-->       
+        <br />
+        <input type="button" value="checkAge" onclick="checkAge();" />
+    </form>
+</body>
+</html>

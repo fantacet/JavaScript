@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript作業</title>
+    <script>
+        function checkName(){
+            var nameX = document.getElementById("name1").value;
+            var reg = /^[\u4E00-\u9FFF]{2,}$/;
+            if (reg.test(nameX)) {
+                document.getElementById("nameCheckResult").innerHTML= "<img src= 'Images/ok.png'/>正確!";
+            }
+            else {
+                document.getElementById("nameCheckResult").innerHTML = "<img src= 'Images/warning.png'/>錯誤!";
+            }
+        }
+        
+        function checkPassword() {
+            var passwordX = document.getElementById("password1").value;
+            var reg = /^(?!.*[\s])(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$ %^&*]).{6,}$/;
+            if (reg.test(passwordX)) {
+                document.getElementById("passwordCheckResult").innerHTML = "<img src= 'Images/ok.png'/>正確!";
+            }
+            else {
+                document.getElementById("passwordCheckResult").innerHTML = "<img src= 'Images/warning.png'/>錯誤!";
+            }
+        }
+
+        function checkDate(){
+            var dateX = document.getElementById("date1").value;
+            var dateObj = new Date(dateX);
+            var reg = /^[0-9]{4}\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$/;
+            if (reg.test(dateX) && (dateObj.getMonth() + 1) == dateX.split("/")[1]) {
+                document.getElementById("dateCheckResult").innerHTML = "<img src= 'Images/ok.png'/>正確!";
+            }
+            else {
+                document.getElementById("dateCheckResult").innerHTML = "<img src= 'Images/warning.png'/>錯誤!";
+            }
+        }
+    </script>
+    <link href="Style1.css" rel="stylesheet" />
+    <style>
+        
+        form{
+            width:70%;
+            margin:10px auto;
+            
+        }
+        fieldset {
+            border: 10px solid #5b4000;
+            border-radius:20px;
+            padding:20px;
+            background-color:#ffdb9b;
+        }
+        legend{
+            font-size:30px;
+            font-family:Tahoma;
+            background-color:#c28800;
+            border-radius:10px;
+            padding:10px;
+        }
+        p{
+            border-bottom:2px solid gray;
+            padding-bottom:20px
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>JavaScript作業集合</h1>
+            <h2 onload="Today()"></h2>
+        </hgroup>
+        <nav>
+            <ul>
+                <li><a href="Index.html">回到首頁</a></li>
+                <li><a href="Homework1.html">九九乘法</a></li>
+                <li><a href="Homework2.html">欄位驗證</a></li>
+                <li>評點製作</li>
+                <li>廣告輪播</li>
+                <li>日曆製作</li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <figure class="seperator">
+            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
+            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
+        </figure>
+        <h2 class="HWTitle">欄位驗證</h2>
+        <article>
+            <form>
+                <fieldset>
+                    <legend>Form Check</legend>
+                    <div>
+                        <label for="name1">姓名:</label>
+                        <input type="text" id="name1" name="name1" placeholder="請輸入姓名" onblur="checkName()" />
+                        <span id="nameCheckResult"></span>
+                        <p>(1.不可為空白，2.至少兩個字以上，3.必須全部為中文字)</p>
+                    </div>
+                    <div>
+                        <label for="password1">密碼:</label>
+                        <input type="password" id="password1" name="password1" placeholder="請輸入密碼" onblur="checkPassword()" />
+                        <span id="passwordCheckResult"></span>
+                        <p>(1.不可為空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</p>
+                    </div>
+                    <div>
+                        <label for="date1">日期:</label>
+                        <input type="text" id="date1" name="date1" placeholder="yyyy/MM/dd" onblur="checkDate()" />
+                        <span id="dateCheckResult"></span>
+                        <p>格式: 西元年/月/日 yyyy/MM/dd</p>
+                    </div>
+                    <div>
+                        <input type="submit" value="送出" />
+                        <input type="reset" value="清除" />
+                    </div>
+                </fieldset>
+            </form>
+        </article>
+    </section>
+</body>
+</html>

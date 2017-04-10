@@ -1,0 +1,1 @@
+﻿window.alert('JAVAscript\n爪哇劇本');

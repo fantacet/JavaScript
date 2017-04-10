@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01functionMethod.html</title>
+    <script>
+        //Method 1 宣告式函數
+        function fAdd1(a, b) {
+            return a + b;
+        }
+
+        document.write(fAdd1(10,20));
+        document.write("<hr>");
+        //Method 2 函數實字
+        var fAdd2 = function (a, b) {
+            return a + b;
+        }
+        document.write(fAdd2(20, 20));
+        document.write("<hr>");
+
+        //Method 3 函數建構子
+        var fAdd3 = new Function("a", "b", "return(a+b)");
+        document.write(fAdd3(30, 20));
+        document.write("<hr>");
+
+        //列印函數內容
+        document.write(fAdd1 + "<br>");
+        document.write(fAdd2 + "<br>");
+        document.write(fAdd3 + "<hr>");
+
+        fAdd2 = fAdd1;
+        document.write(fAdd2 + "<hr>");
+
+        //=================================
+        //物件方法:實字
+        boy = { age: 15, sex: "male" };
+        boy.full = function () { return this.sex + "," + this.age };
+        document.write(boy.full() + "<br>");
+        //物件方法:宣告
+        function f() { return this.sex + "," + this.age };
+        boy.full2 = f
+        document.write(boy.full2() + "<hr>");
+        
+        //======================================
+        //檢查是否有提供某種方法，若為undefined，則為false
+        document.write(boy.full9 + "<br>");
+
+        if (boy.full)
+        { document.write("supported" + "<br>"); }
+        else
+        { document.write("unsupported" + "<br>"); }
+        
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

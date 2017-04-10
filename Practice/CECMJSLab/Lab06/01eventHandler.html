@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01eventHandler.html</title>
+    <script>
+        function f1() {
+            alert("Method 1");
+        }
+        function f2() {
+            alert("Method 2");
+        }
+        function f3() {
+            alert("Method 3");
+        }
+        window.onload = function () {
+            document.getElementById("m2").onclick = function () { f2(); f3(); };
+        }
+    </script>
+</head>
+<body>
+    <!-- method 1 -->
+    <h1 id="m1" onclick="f1()">Method 1</h1>
+
+    <!-- method 2 -->
+    <h1 id="m2">Method 2</h1>
+    <script>
+       
+    </script>
+    
+    <!-- method 3 -->
+    <h1 id="m3">Method 3</h1>
+    <script>
+        document.getElementById("m3").addEventListener("click", f3, false);
+        //IE8之前的版本要用另一種方法，但已漸漸棄用。
+        //document.getElementById("m3").attachEvent("onclick", check);
+    </script>
+
+</body>
+</html>

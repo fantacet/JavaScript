@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>02setclock.html</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("picH1").insertAdjacenText("BeforeBegin","<p>現在時間:</p>");
+            //selectclock();
+
+        }
+
+
+        function selectclock(){
+            var d = new Date();
+            var s1 = parseInt(d.getSeconds() / 10);
+            var s2 = d.getSeconds() % 10;
+            document.getElementById("picS1").src = "WinImages/" + s1 + ".gif";
+            document.getElementById("picS2").src = "WinImages/" + s2 + ".gif";
+            //document.write("<img src='WinImages/"+ s2 + ".gif' />")
+        }
+
+        window.setInterval(selectclock, 1000);
+    </script>
+</head>
+<body>
+    <!--<img alt="" src="WinImages/0.gif" /><img alt="" src="WinImages/1.gif" />:<img id="s1" alt="" src="WinImages/2.gif" /><img id="s2" alt="" src="WinImages/3.gif" />
+     -->
+    <img alt="" id="picH1" /><img alt="" id="picH2" />:<img alt="" id="picM1" /><img alt="" id="picM2" />:<img alt="" id="picS1" /><img alt="" id="picS2" />
+   
+</body>
+</html>

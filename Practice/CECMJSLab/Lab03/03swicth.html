@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>03swicth.html</title>
+    <script>
+        //var area = window.prompt("pleae input area no:");
+        //switch (area) {
+        //    case "100": document.write("中正區"); break;
+        //    case "104": document.write("中山區"); break;
+        //    case "107": document.write("大安區"); break;
+        //    default: document.write("other區"); break;
+
+        //}
+        document.write("<hr>");
+
+        var age = parseInt(window.prompt("請輸入年齡:", "10"));
+        
+        if (age > 0 && age <= 6)
+        {
+            document.write("免票");
+        }
+        else if (age > 6 && age <= 25){
+            document.write("學生票");
+        }
+        else {
+            document.write("請輸入正確年齡");
+        }
+            
+	</script>
+</head>
+<body>
+
+</body>
+</html>

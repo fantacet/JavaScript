@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>04for.html</title>
+    <style>
+       td { border:solid 2px navy;
+             font-size:30px;
+             color: darkred;
+             background-color:lightblue;
+             padding:10px;
+             text-decoration-line:underline;
+          }
+        table {
+            border-collapse: collapse;
+            }
+        span{
+            width:600px;
+            text-align:right;
+            background-color:black;
+        }
+    </style>
+    <script>
+        /*
+        var i=1
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+			
+        for (var i=1;i<=5;i++)
+        for(var j=1;j<=5;j++)
+        document.write("i="+i+" j="+j+"<br/>");
+        */
+        //var sum = 0;
+        //for (var i = 1; i <= 5; i++) {
+        //    //sum=sum+i;
+        //    sum += i;
+        //    document.write("i=" + i + " sum=" + sum + "<br/>");
+
+        //}
+        document.write("<table><tr>")
+        for (var i = 1; i <= 9; i++) {
+            document.write("<td style='margin-top:"+(200-i*10) +"px;'>")
+            for (var j = 1; j <=i; j++) {
+                document.write(i + "*" + j + "=" + "<span class='aaa'>" + i*j + "</span>" + "<br>");
+            }
+            document.write("</td>")
+        }
+        
+        document.write("</tr></table>");
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

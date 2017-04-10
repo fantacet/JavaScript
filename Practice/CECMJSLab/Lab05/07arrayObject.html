@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>07arrayObject.html</title>
+    <script>
+        //Array Declaration 1
+        
+        var balls = new Array();
+        //alert(balls.length);
+        balls[0] = "basketball";
+        balls[1] = "baseball";
+        balls[2] = "tennis";
+        balls[3] = "volleyball";
+        balls[4] = 123;
+        //alert(balls.length);
+        //document.write(balls);
+
+        //Array Declaration 2
+        var balls2 = new Array(["1ball", "2ball", "3ball"]);
+        //document.write(balls2);
+
+        //Array Declaration 3
+        var balls3 = ["1ball", "2ball", "3ball", "4ball"];
+        //document.write(balls3);
+
+        //for (var i = 0; i < balls3.length; i++) {
+        //    document.write("balls3[" + i + "]: = " + balls3[i] + "<br>");
+        //}
+
+        //for (var obj in balls3) {
+        //    document.write("balls3[" + obj + "]: = " + obj + "<br>");
+        //}
+
+        var cookieStr = "name2=Mary;name=Jack";
+        var cookieAry = cookieStr.split(";");
+        document.write("<table>");
+        for (var i = 0; i < cookieAry.length; i++) {
+            var x = cookieAry[i].split("=");
+            document.write("<tr><td>" + x[0] +"</td>");
+            document.write("<td>" + x[1] + "</td></tr>");
+        }
+        document.write("</table>" + "<hr>");
+
+        //var person = new Array();
+        //person = { a: "111", b: "222", c: "333" };
+        //document.write(person.join("-"));
+
+        var person = new Array();
+        person["a"] = "111";
+        person["b"] = "222";
+        person["c"] = "333";
+        document.write(Object.prototype.toString.call(person));
+
+        /*
+            var balls=["basketball","baseball","tennis","volleyball",123];
+            document.write("join('-')="+balls.join("-")+"<br>");
+            document.write("reverse().join('=>')="+balls.reverse().join("=>")+"<br>");
+            document.write("sort()="+balls.sort()+"<br>");
+       */
+    </script>
+    <style>
+        table,td {
+            border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

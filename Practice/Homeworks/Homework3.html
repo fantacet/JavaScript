@@ -14,35 +14,50 @@
         }
     </style>
     <script>
+        var chimps;
+        var chimpsLen;
+
         window.onload = function () {
-            var chimps = document.querySelectorAll(".chimpPics img")
-            var chimpsLen = chimps.length;
-            alert(chimpsLen);
+            chimps = document.querySelectorAll(".chimpPics img");
+            chimpsLen = chimps.length;
             for (var i = 0; i < chimpsLen; i++) {
-                chimps[i].addEventListener("click", chimpScore);
+                chimps[i].addEventListener("mouseover", function () { chimpColor(this.id) });
+                chimps[i].addEventListener("mouseout", function () { chimpReset(this.id) });
+                chimps[i].addEventListener("click", function () { chimpResult(this.id) });
             }
         }
 
         function chimpScore() {
             chimpColor(this.id);
-            //test(this);
+
         }
+
         function chimpColor(chimpid) {
             var number = chimpid.substr(-1);
-           
-            alert(number);
-            this.style.filter = grayscale(0);
             for (var i = 0; i < number; i++) {
-                document.getElementById(chimpid).className = "score";
-                //chimps[i].className = "score";
-                chimps[i].src = "Images/chimp.png"
+                chimps[i].className = "score";
             }
         }
-        function chimpNumber(chimp) {
+
+        function chimpNumber(chimpid) {
 
         }
+        function chimpReset(chimpid) {
+            var number = chimpid.substr(-1);
+            for (var i = 0; i < number; i++) {
+                chimps[i].className = "noscore";
+            }
+        }
 
-
+        function chimpResult(chimpid) {
+            var number = chimpid.substr(-1);
+            document.getElementById("result").innerHTML = "<span>" + number + "</span>";
+            for (var i = 0; i < number; i++) {
+                chimps[i].removeEventListener("mouseover", function () { chimpColor(this.id) });
+                chimps[i].removeEventListener("mouseout", function () { chimpReset(this.id) });
+                chimps[i].removeEventListener("click", function () { chimpResult(this.id) });
+            }
+        }
     </script>
 
 </head>
@@ -77,7 +92,7 @@
                 <img id="chimp4" class="noscore" src="Images/chimp.jpg" />
                 <img id="chimp5" class="noscore" src="Images/chimp.jpg" />
             </figure>
-            <p id="result"></p>
+            <p id="result" style="font-size:40px;color:red;text-align:center;"></p>
         </article>
     </section>
 </body>

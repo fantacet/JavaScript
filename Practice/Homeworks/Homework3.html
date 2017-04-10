@@ -7,56 +7,81 @@
     <link href="Style1.css" rel="stylesheet" />
     <style>
         .noscore {
-            filter: grayscale(1);
+            filter: grayscale(1) blur(2px);
         }
         .score {
-            filter: grayscale(0);
+            filter: grayscale(0) drop-shadow(0 0 10px orange);
         }
+        .chimpPics img {
+            border-radius: 60px;
+            width: 200px;
+            margin: 0px;
+        }
+            .chimpPics img:hover {
+                /*z-index: 2;*/
+                transition-timing-function:ease-in-out;
+                transition-duration: 400ms;
+                transform: scale(1.05,1.05) translate3d(0,0,0);
+                cursor: pointer;
+            }
+            .btnReset {
+                color: darkorange;
+                border: 5px solid goldenrod;
+                border-radius: 10px;
+                background-color: white;
+                margin-left: 20px;
+                font-size: 28px;
+            }
+            .btnReset:hover {
+                background-color: lemonchiffon;
+                cursor:pointer;
+            }
     </style>
     <script>
         var chimps;
         var chimpsLen;
-
+        var chimpNumberDetermined = false;
         window.onload = function () {
             chimps = document.querySelectorAll(".chimpPics img");
             chimpsLen = chimps.length;
             for (var i = 0; i < chimpsLen; i++) {
                 chimps[i].addEventListener("mouseover", function () { chimpColor(this.id) });
-                chimps[i].addEventListener("mouseout", function () { chimpReset(this.id) });
+                chimps[i].addEventListener("mouseout", chimpSelect);
                 chimps[i].addEventListener("click", function () { chimpResult(this.id) });
             }
         }
-
-        function chimpScore() {
-            chimpColor(this.id);
-
-        }
-
+        
         function chimpColor(chimpid) {
             var number = chimpid.substr(-1);
-            for (var i = 0; i < number; i++) {
-                chimps[i].className = "score";
+            if (!chimpNumberDetermined) {
+                for (var i = 0; i < number; i++) {
+                    chimps[i].className = "score";
+                }
+                document.getElementById("result").innerHTML = "<span>" + number + "隻猩!</span>";
             }
         }
 
-        function chimpNumber(chimpid) {
-
+        function chimpSelect() {
+            if (!chimpNumberDetermined) {
+                for (var i = 0; i < chimps.length; i++) {
+                    chimps[i].className = "noscore";
+                }
+            }
         }
-        function chimpReset(chimpid) {
-            var number = chimpid.substr(-1);
-            for (var i = 0; i < number; i++) {
+
+        function chimpReset() {
+            chimpNumberDetermined = false;
+            for (var i = 0; i < chimpsLen; i++) {
                 chimps[i].className = "noscore";
             }
+            document.getElementById("result").innerHTML = "";
         }
 
         function chimpResult(chimpid) {
             var number = chimpid.substr(-1);
-            document.getElementById("result").innerHTML = "<span>" + number + "</span>";
-            for (var i = 0; i < number; i++) {
-                chimps[i].removeEventListener("mouseover", function () { chimpColor(this.id) });
-                chimps[i].removeEventListener("mouseout", function () { chimpReset(this.id) });
-                chimps[i].removeEventListener("click", function () { chimpResult(this.id) });
-            }
+            chimpNumberDetermined = true;
+            document.getElementById("result").innerHTML = "<span>您總共選了" + number +
+                "隻猩!</span><span class='btnReset' onclick='chimpReset()'>重選</span>";
         }
     </script>
 
@@ -85,14 +110,14 @@
         </figure>
         <h2 class="HWTitle">評點製作</h2>
         <article>
-            <figure class="chimpPics">
-                <img id="chimp1" class="noscore" src="Images/chimp.jpg" />
-                <img id="chimp2" class="noscore" src="Images/chimp.jpg" />
-                <img id="chimp3" class="noscore" src="Images/chimp.jpg" />
-                <img id="chimp4" class="noscore" src="Images/chimp.jpg" />
-                <img id="chimp5" class="noscore" src="Images/chimp.jpg" />
+            <figure class="chimpPics" style="text-align:center;">
+                <img id="chimp1" class="noscore" src="Images/chimp.png" />
+                <img id="chimp2" class="noscore" src="Images/chimp.png" />
+                <img id="chimp3" class="noscore" src="Images/chimp.png" />
+                <img id="chimp4" class="noscore" src="Images/chimp.png" />
+                <img id="chimp5" class="noscore" src="Images/chimp.png" />
             </figure>
-            <p id="result" style="font-size:40px;color:red;text-align:center;"></p>
+            <div id="result" style="line-height:60px;font-size:40px;color:brown;background-color:lightyellow;text-align:center;"></div>
         </article>
     </section>
 </body>

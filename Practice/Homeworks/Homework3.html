@@ -66,6 +66,7 @@
                 for (var i = 0; i < chimps.length; i++) {
                     chimps[i].className = "noscore";
                 }
+                document.getElementById("result").innerHTML = "";
             }
         }
 
@@ -78,10 +79,12 @@
         }
 
         function chimpResult(chimpid) {
-            var number = chimpid.substr(-1);
-            chimpNumberDetermined = true;
-            document.getElementById("result").innerHTML = "<span>您總共選了" + number +
-                "隻猩!</span><span class='btnReset' onclick='chimpReset()'>重選</span>";
+            if (!chimpNumberDetermined) {
+                var number = chimpid.substr(-1);
+                chimpNumberDetermined = true;
+                document.getElementById("result").innerHTML = "<span>您總共選了" + number +
+                    "隻猩!</span><span class='btnReset' onclick='chimpReset()'>重選</span>";
+            }
         }
     </script>
 

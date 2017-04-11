@@ -31,14 +31,13 @@ nav {
 
 
 
-ul {
+nav ul {
     list-style-position:inside;
     list-style-type: none;
     list-style-image: url('Images/item.png');
 }
 
-    ul li {
-        /*background-color: rgba(200,200,50,0.5);*/
+nav ul li {
         width: 15%;
         float: left;
         margin-right: 5px;

@@ -12,8 +12,8 @@
 
         }
         function setCookie(key, value) {            
-            document.cookie = "name2=Mary;expires=Sat, 10 Dec 2016 20:47:11 GMT; path=/";
-            var cookieDate = new Date(2016, 11, 10, 19, 30, 30);
+            document.cookie = "name2=Mary;expires=Sat, 10 Dec 2017 20:47:11 GMT; path=/";
+            var cookieDate = new Date(2017, 11, 10, 19, 30, 30);
             document.cookie = key + "=" + encodeURI(value) + ";expires=" + cookieDate.toGMTString() + ";path=/";
             alert(document.cookie);  //name2=Mary;name=Jack
 
@@ -23,7 +23,7 @@
             //alert(exp);
             exp.setTime(exp.getTime() - (24 * 60 * 60 * 1000));
             //alert(exp);
-            //document.cookie = "name=Jack;expires=Sat, 10 Dec 2015 20:47:11 GMT; path=/";
+            document.cookie = "name=Jack;expires=Sat, 10 Dec 2017 20:47:11 GMT; path=/";
             document.cookie = key + "=" + "; expires=" + exp.toGMTString() + ";path=/";
         }
        

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript作業</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            CreateYear();
+            CreateMonth();
+            CreateDate();
+            document.getElementById('idSelectYear').addEventListener("change", function () { CreateDate(); ShowDateResult() });
+            document.getElementById('idSelectMonth').addEventListener("change", function () { CreateDate(); ShowDateResult()});
+            document.getElementById('idSelectDate').addEventListener("change", ShowDateResult);
+        }
+
+        function CreateYear() {
+            for (i = 2010; i <= 2020; i++) {                                                     //新增年
+                var opt = window.document.createElement("option");
+                opt.setAttribute("value", i);
+                var optname = document.createTextNode(i);
+                opt.appendChild(optname);
+
+                document.getElementById('idSelectYear').appendChild(opt);
+            }
+        }
+
+        function CreateMonth() {
+            for (i = 1; i <= 12; i++) {                                                             //新增月
+                var opt = window.document.createElement("option");
+                opt.setAttribute("value", i);
+                var optname = document.createTextNode(i);
+                opt.appendChild(optname);
+
+                document.getElementById('idSelectMonth').appendChild(opt);
+            }
+        }
+
+        function CreateDate() {
+            document.getElementById('idSelectDate').innerHTML = "";
+            var theYear = document.getElementById('idSelectYear').value;
+            var theMonth = document.getElementById('idSelectMonth').value;
+
+            //利用將日期設為0的技巧，看被new Date()解譯出的theMonth的前一個月的日期有幾天。
+            //注意!!這裡的theMonth代表的其實是下個月，因為Date物件的月份從0開始。
+            var d = new Date(theYear, theMonth, 0);
+            var days = d.getDate()
+            for (i = 1; i <= days; i++) {                                                             //新增日
+                var opt = window.document.createElement("option");
+                opt.setAttribute("value", i);
+                var optname = document.createTextNode(i);
+                opt.appendChild(optname);
+                document.getElementById('idSelectDate').appendChild(opt);
+            }
+        }
+
+        function ShowDateResult() {
+            var theYear = document.getElementById('idSelectYear').value;
+            var theMonth = document.getElementById('idSelectMonth').value;
+            var theDate = document.getElementById('idSelectDate').value;
+            document.getElementById("idDateResult").textContent = "選取的日期是" + theYear + "年" + theMonth
+                + "月" + theDate + "日";
+            document.getElementById("News").setAttribute("src",
+                "http://www.google.com.tw/search?q=location%3ATaiwan&hl=zh-TW&gl=tw&as_drrb=b&authuser=0&source=lnt&tbs=cdr%3A1%2Ccd_min%3A"
+                + theMonth + "%2F" + theDate + "%2F" + theYear + "%2Ccd_max%3A" + theMonth + "%2F"
+                + theDate + "%2F" + theYear + "&tbm=nws");
+        }
+
+    </script>
+
+    <link href="Style1.css" rel="stylesheet" />
+    <style>
+       article{
+           text-align:center;
+           font-size:34px;
+       }
+       select{
+           font-size:24px;
+       }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>JavaScript作業集合</h1>
+            <h2 onload="Today()"></h2>
+        </hgroup>
+        <nav>
+            <ul>
+                <li><a href="Index.html">回到首頁</a></li>
+                <li><a href="Homework1.html">九九乘法</a></li>
+                <li><a href="Homework2.html">欄位驗證</a></li>
+                <li><a href="Homework3.html">評點製作</a></li>
+                <li><a href="Homework4.html">廣告輪播</a></li>
+                <li><a href="Homework5.html">日曆製作</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <figure class="seperator">
+            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
+            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
+        </figure>
+        <h2 class="HWTitle">日曆製作</h2>
+        <article>
+            <select id="idSelectYear"></select>
+            <select id="idSelectMonth"></select>
+            <select id="idSelectDate"></select>
+            <p id="idDateResult"></p>
+            <iframe id="News" style="width:100%; height:900px;"></iframe>
+
+        </article>
+    </section>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -15,16 +15,22 @@
 			theDIV.appendChild(eleP);
 
 			var eleImg = document.createElement("img");
-			eleImg.setAttribute("src","DOM/DOMImage/rabbit-hat.gif");
+            eleImg.setAttribute("src", "DOM/DOMImage/rabbit-hat.gif");
+            eleImg.setAttribute("id", "img1");
 
 			theDIV.appendChild(eleImg);
-		}
+        }
+
+            function RemoveElement() {
+                var theNode = document.getElementById("img1");
+                theNode.parentNode.removeChild(theNode);
+            }
 		</script>
 	</head>
 
 	<body>
 		<div id="iddiv">div</div>
-		<input type="button" value="CreateElement"  onclick="CreateElement();">
-		
+		<input type="button" value="CreateElement"  onclick="CreateElement();"/>
+        <input type="button" value="RemoveElement" onclick="RemoveElement();"/>
 	</body>
 </html>

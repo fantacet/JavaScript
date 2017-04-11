@@ -17,6 +17,12 @@
             context.strokeStyle = "blue";
             context.strokeText("Hello Canvas Text!", x, y);
 
+            context.beginPath();
+            context.moveTo(250, 0);
+            context.lineTo(250, 400);
+            context.closePath();
+            context.strokeStyle = "#ff0000";
+            context.stroke();
 
             context.fillStyle = "purple";
             context.fillText("Hello Canvas Text!", x, y);

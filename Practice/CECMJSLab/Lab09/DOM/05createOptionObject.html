@@ -5,24 +5,61 @@
     <title>05createOptionObject.html</title>
     <script type="text/javascript">
         window.onload = function () {
-            for (i = 1; i <= 12; i++) {   //新增月 
-                var opt = window.document.createElement("option");                
+            CreateYear();
+            CreateMonth();
+            CreateDate()
+        }
+
+        function CreateYear(){
+            for (i = 2010; i <= 2020; i++) {   //新增年 
+                var opt = window.document.createElement("option");
                 opt.setAttribute("value", i);
                 var optname = document.createTextNode(i);
                 opt.appendChild(optname);
-                //opt.value = i;
-                //opt.innerHTML = i;
 
+                document.getElementById('idSelectYear').appendChild(opt);
+            }
+        }
+
+        function CreateMonth() {
+            for (i = 1; i <= 12; i++) {   //新增月 
+                var opt = window.document.createElement("option");
+                opt.setAttribute("value", i);
+                var optname = document.createTextNode(i);
+                opt.appendChild(optname);
 
                 document.getElementById('idSelectMonth').appendChild(opt);
             }
+        }
+
+        function CreateDate() {
+            var theYear = document.getElementById('idSelectYear').value;
+            var theMonth = document.getElementById('idSelectMonth').value;
+            var d = new Date(theYear, theMonth, 0);
             
+            alert(d.getDate());
+            //for (i = 1; i <= 31; i++) {   //新增日 
+            //    var opt = window.document.createElement("option");
+            //    opt.setAttribute("value", i);
+            //    var optname = document.createTextNode(i);
+            //    opt.appendChild(optname);
+
+                
+            //    var DateToBeValidated = new Date(theYear + theMonth + i);
+
+            //    if (true) {
+            //        document.getElementById('idSelectDate').appendChild(opt);
+            //    }
+            //}
         }
         
 	</script>
 	</head>
 	<body>
+        <select id="idSelectYear"></select>
 		<select id="idSelectMonth"></select>
-	</body>
+        <select id="idSelectDate"></select>
+        <input type="button" value="有幾天" onclick="CreateDate()" />
+ 	</body>
 
 </html>

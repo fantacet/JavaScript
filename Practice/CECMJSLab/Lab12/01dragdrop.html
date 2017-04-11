@@ -18,16 +18,24 @@
     </style>
     <script>
         function dragStartHandler(e) {
-
+            e.dataTransfer.setData("text/plain", e.target.id);
         }
 
 
         function dragoverHandler(e) {
-
+            e.preventDefault();
         }
 
         function dropHandler(e) {
-
+            e.preventDefault();
+            var sourceid = e.dataTransfer.getData("text/plain");
+            //alert(e.CurrentTarget.id);
+            var source = document.getElementById(sourceid);
+            var cloneObj = document.createElement("div");
+            cloneObj.innerHTML = source.innerHTML;
+            cloneObj.setAttribute("class", "dragItemStyle");
+            //alert(cloneObj.innerHTML);????????????????????????????????
+            e.currentTarget.appendChild(cloneObj);
         }
     </script>
 </head>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01functionMethod.html</title>
+    <script>
+        //Method 1
+        function fAdd1(a, b) {
+            //window.alert(b);  //少掉的參數為undefined           
+            return (a + b);
+        }
+        document.write("fAdd1(10,20)=" + fAdd1(10, 20) + "<br>");
+        //document.write("fAdd1(10,20,30)=" + fAdd1(10, 20, 30) + "<br>");  //30忽略
+        //document.write("fAdd1(10)=" + fAdd1(10) + "<br>");  //NaN
+
+        //Method 2
+        var fAdd2 = function (a, b) {
+            return (a + b);
+        }
+        document.write("fAdd2(30,20)=" + fAdd2(30, 20) + "<br>");
+
+        //Method 3
+        var fAdd3 = new Function("a", "b", "return(a+b);");
+        document.write("fAdd3(50,20)=" + fAdd3(50, 20) + "<hr>");
+        
+   //=====================================================           
+        //fAdd2(30, 20) -->calling
+        //列印函數內容
+        //var a = 10;
+        //var b = 20;
+        //b = a;
+        //document.write(a);
+        document.write("fAdd2=" + fAdd2 + "<hr>");
+        document.write("fAdd1=" + fAdd1 + "<hr>");
+
+        fAdd2 = fAdd1;
+        document.write("fAdd2=" + fAdd2 + "<hr>");
+
+        //===============object=============
+        var personal = new Object();
+        personal.name = "Jack";
+        personal.ID = "A123456789";
+        personal.age = 35;
+
+        //==============物件方法製作===========
+        personal.full = function () { return this.name + "," + this.age) };  //函數method 2
+        document.write(personal.full);
+       
+        document.write(personal.full() + "<br>");
+
+        //函數method 1
+        function f() {
+            return (this.name+","+this.ID);
+        }
+        personal.full1 = f;
+        document.write(personal.full1() + "<br>");
+        
+        //==========檢查是否有此方法，是否支援此方法，達到跨瀏覽器功能==================
+        document.write(personal.full + "<br>");
+        document.write(personal.full2 + "<br>");
+
+        //if (personal.full2)
+        //    window.alert("support");
+        //else
+        //    window.alert("not support");
+
+        document.write(window.alertx + "<hr>");
+        if(window.alert)
+            window.alert("support");
+        else
+            window.alert("not support");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

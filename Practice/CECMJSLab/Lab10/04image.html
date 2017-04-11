@@ -6,8 +6,16 @@
     <script>
         window.onload = function () {
 	    var canvas = document.getElementById("myCanvas");
-            var context = canvas.getContext("2d");
+	    var context = canvas.getContext("2d");
 
+	        var imgObj = new Image(); //<img>
+	        imgObj.src = "cars.jpg";  //<img src="cars.jpg">
+
+	        imgObj.onload = function () {
+	            //context.drawImage(imgObj, 0, 0);
+	            //context.drawImage(imgObj, 0, 0, 217, 127);
+	            context.drawImage(imgObj, 187, 44, 100, 30, 100, 100, 150, 60);
+	        }
         }
     </script>
 </head>

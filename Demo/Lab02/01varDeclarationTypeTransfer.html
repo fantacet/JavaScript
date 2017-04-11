@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01varDeclarationTypeTransfer.html</title>
+    <script>
+        //1.
+        var a;  //宣告
+        a = 10;  //定義 
+
+        //2.
+        var a = 10;
+
+        //3.       
+        a = 10;
+        //document.write("a=");
+        //document.write(a);
+        document.write("a=" + a + " typeof a=" + typeof a + "<br>");
+
+        a = "abc";
+        document.write("a=" + a + " typeof a=" + typeof a + "<br>");
+
+        var b = true;
+        document.write(b + 1 + "typeof b=" + typeof b + "<br>");
+
+        var n = null;
+        document.write("n=" + n + " typeof n=" + typeof n + "<br>");
+
+        var u;
+        document.write("u=" + u + " typeof u=" + typeof u + "<br>");
+
+        //===============object=============
+        var personal = new Object();
+        personal.name = "Jack";
+        personal.ID = "A123456789";
+        personal.age = 35;
+
+        document.write(personal.name + "," + personal["age"] + "<br>");
+
+        var cars = { brand: "audi", speed: 200 };  //object literal
+        document.write(cars["brand"] + "," + cars.speed + "<br>");
+        document.write(cars);  //[object Object]
+
+
+        document.write("parseInt('123a')=" + parseInt('123a') + "<br>");
+        document.write("parseInt('123.45')=" + parseInt('123.45') + "<br>");
+        document.write("parseInt('a123')=" + parseInt('a123') + "<br>");//NaN not a number
+    </script>
+</head>
+<body>
+    <pre><!-- preformat 預留格式-->
+        sdjfhkjsdhfjk                          9348590384509384
+dsfksdjfksdjlf
+
+</pre>
+    
+</body>
+</html>

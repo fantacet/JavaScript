@@ -5,7 +5,20 @@
     <title>01fileRead.html</title>
     <script>
         function fileViewer() {
+            var files = document.getElementById("file1").files;
+            for (var i = 0; i < files.length; i++) {
+                //alert(files[i].name + ":" + files[i].type);
 
+                var reader = new FileReader();
+                reader.readAsText(files[i], "UTF-8");
+                reader.onload = function (e) {
+                    var fileContent = e.target.result;
+                    document.getElementById("show").insertAdjacentHTML("BeforeEnd", fileContent);
+                }
+
+                
+
+            }
         }
     </script>
 </head>

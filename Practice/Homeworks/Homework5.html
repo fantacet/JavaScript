@@ -59,10 +59,17 @@
             var theDate = document.getElementById('idSelectDate').value;
             document.getElementById("idDateResult").textContent = "選取的日期是" + theYear + "年" + theMonth
                 + "月" + theDate + "日";
-            document.getElementById("News").setAttribute("src",
-                "http://www.google.com.tw/search?q=location%3ATaiwan&hl=zh-TW&gl=tw&as_drrb=b&authuser=0&source=lnt&tbs=cdr%3A1%2Ccd_min%3A"
-                + theMonth + "%2F" + theDate + "%2F" + theYear + "%2Ccd_max%3A" + theMonth + "%2F"
-                + theDate + "%2F" + theYear + "&tbm=nws");
+            var d = new Date(theYear, theMonth-1, theDate);
+            
+            //document.getElementById("News").setAttribute("src",
+            //    "https://www.google.com/custom?q=location%3ATaiwan&hl=zh-TW&gl=tw&as_drrb=b&authuser=0&source=lnt&tbs=cdr%3A1%2Ccd_min%3A"
+            //    + theMonth + "%2F" + theDate + "%2F" + theYear + "%2Ccd_max%3A" + theMonth + "%2F"
+            //    + theDate + "%2F" + theYear + "&tbm=nws");
+            //document.getElementById("News").setAttribute("src", "http://www.chinatimes.com/history-by-date/" +
+            //    theYear + "-" + theMonth + "-" + theDate + "-2601");
+            document.getElementById("News").setAttribute("src", "http://www.chinatimes.com/history-by-date/" + d.getFullYear() + "-" +
+                (d.getMonth() + 1) + "-" + d.getDate() + "-2601");  //Todo 個數前少了0
+            alert(d.to.toDateString().split("T")[0]);
         }
 
     </script>

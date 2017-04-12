@@ -3,19 +3,49 @@
 <head>
     <meta charset="utf-8" />
     <title>JavaScript作業</title>
-    <script>
-        
-    </script>
+
     <link href="Style1.css" rel="stylesheet" />
     <style>
-       .liPhotoTag{
+        .liSlideTag {
+        }
+        #SlideContainer img {
+            width: 200px;
+            height: 200px;
+        }
+       .Hidden{
+           display:none;
+       }
+       .Show{
+           display:inline-block;
+       }
 
-       }
-       .Photoes{
-           width:200px;
-           height:200px;
-       }
     </style>
+    <script>
+        var slideIndex = 0;
+        var slideLen = document.querySelectorAll(".SlideContainer img").length;
+
+            window.onload = function () {
+                ShowSlide(slideIndex);
+            }
+
+            window.setInterval(ToNextSlide, 2000);
+
+            function ShowSlide(index) {
+                //document.querySelectorAll("div.SlideContainer img")[index].className = "Show";
+                document.querySelectorAll("#SlideContainer img")[index].setAttribute("class","Show");
+            }
+
+            function ToPreviousSlide() {
+                slideIndex = (slideIndex + slideLen - 1) % slideLen;
+                ShowSlide(slideIndex);
+            }
+            function ToNextSlide() {
+                document.querySelectorAll("#SlideContainer img")[slideIndex].setAttribute("class", "Hidden");
+                slideIndex = (slideIndex + 1) % slideLen;
+                alert()
+                ShowSlide(slideIndex);
+            }
+    </script>
 </head>
 <body>
     <header>
@@ -41,23 +71,24 @@
         </figure>
         <h2 class="HWTitle">廣告輪播</h2>
         <article>
-            <div>
-                <img class="Photoes" src="images/chimp.jpg" />
-                <img class="Photoes" src="images/chimp.png" />
-                <img class="Photoes" src="images/fan.png" />
-                <img class="Photoes" src="images/item.png" />
-                <img class="Photoes" src="images/ok.png" />
+            <div id="SlideContainer">
+                <img class="Hidden" src="images/chimp.jpg" />
+                <img class="Hidden" src="images/chimp.png" />
+                <img class="Hidden" src="images/fan.png" />
+                <img class="Hidden" src="images/item.png" />
+                <img class="Hidden" src="images/ok.png" />
                 <ul>
-                    <li class="liPhotoTag"><a>1</a></li>
-                    <li class="liPhotoTag"><a>2</a></li>
-                    <li class="liPhotoTag"><a>3</a></li>
-                    <li class="liPhotoTag"><a>4</a></li>
-                    <li class="liPhotoTag"><a>5</a></li>
+                    <li class="liSlideTag"><a>1</a></li>
+                    <li class="liSlideTag"><a>2</a></li>
+                    <li class="liSlideTag"><a>3</a></li>
+                    <li class="liSlideTag"><a>4</a></li>
+                    <li class="liSlideTag"><a>5</a></li>
                 </ul>
-                <span class="btnPhotoControl" onclick="">前一張</span>
-                <span class="btnPhotoControl" onclick="">停止播放</span>
-                <span class="btnPhotoControl" onclick="">後一張</span>
+                <span class="btnSlideControl" onclick="">前一張</span>
+                <span class="btnSlideControl" onclick="">停止播放</span>
+                <span class="btnSlideControl" onclick="">後一張</span>
             </div>
+
         </article>
     </section>
 </body>

@@ -4,38 +4,16 @@
     <meta charset="utf-8" />
     <title>JavaScript作業</title>
     
-    <link href="Style1.css" rel="stylesheet" />
+    <link href="../Style1.css" rel="stylesheet" />
     <style>
-        .noscore {
-            filter: grayscale(1) blur(2px);
-        }
-        .score {
-            filter: grayscale(0) drop-shadow(0 0 10px orange);
-        }
-        .chimpPics img {
-            border-radius: 60px;
-            width: 200px;
-            margin: 0px;
-        }
-            .chimpPics img:hover {
-                /*z-index: 2;*/
-                transition-timing-function:ease-in-out;
-                transition-duration: 400ms;
-                transform: scale(1.05,1.05) translate3d(0,0,0);
-                cursor: pointer;
-            }
-            .btnReset {
-                color: darkorange;
-                border: 5px solid goldenrod;
-                border-radius: 10px;
-                background-color: white;
-                margin-left: 20px;
-                font-size: 28px;
-            }
-            .btnReset:hover {
-                background-color: lemonchiffon;
-                cursor:pointer;
-            }
+        .noscore { filter: grayscale(1) blur(2px); }
+        .score {filter: grayscale(0) drop-shadow(0 0 10px orange);}
+        .chimpPics img {border-radius: 60px;width: 200px;margin: 0px;}
+        .chimpPics img:hover {transition-timing-function:ease-in-out;transition-duration: 400ms;
+                transform: scale(1.05,1.05) translate3d(0,0,0);cursor: pointer;}
+        .btnReset {color: darkorange;border: 5px solid goldenrod;border-radius: 10px;background-color: white;
+                margin-left: 20px;font-size: 28px;}
+        .btnReset:hover {background-color: lemonchiffon;cursor:pointer;}
     </style>
     <script>
         var chimps;
@@ -50,7 +28,7 @@
                 chimps[i].addEventListener("click", function () { chimpResult(this.id) });
             }
         }
-        
+
         function chimpColor(chimpid) {
             var number = chimpid.substr(-1);
             if (!chimpNumberDetermined) {
@@ -87,38 +65,37 @@
             }
         }
     </script>
-
 </head>
 <body>
     <header>
         <hgroup>
             <h1>JavaScript作業集合</h1>
-            <h2 onload="Today()"></h2>
+            <h2></h2>
         </hgroup>
         <nav>
             <ul>
-                <li><a href="Index.html">回到首頁</a></li>
-                <li><a href="Homework1.html">九九乘法</a></li>
-                <li><a href="Homework2.html">欄位驗證</a></li>
-                <li><a href="Homework3.html">評點製作</a></li>
-                <li><a href="Homework4.html">廣告輪播</a></li>
-                <li><a href="Homework5.html">日曆製作</a></li>
+                <li><a href="../Index.html">回到首頁</a></li>
+                <li><a href="../pages/Homework1.html">九九乘法</a></li>
+                <li><a href="../pages/Homework2.html">欄位驗證</a></li>
+                <li><a href="#">評點製作</a></li>
+                <li><a href="../pages/Homework4.html">廣告輪播</a></li>
+                <li><a href="../pages/Homework5.html">日曆製作</a></li>
             </ul>
         </nav>
     </header>
     <section>
         <figure class="seperator">
-            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
-            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
+            <img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" />
+            <img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" />
         </figure>
         <h2 class="HWTitle">評點製作</h2>
         <article>
             <figure class="chimpPics" style="text-align:center;">
-                <img id="chimp1" class="noscore" src="Images/chimp.png" />
-                <img id="chimp2" class="noscore" src="Images/chimp.png" />
-                <img id="chimp3" class="noscore" src="Images/chimp.png" />
-                <img id="chimp4" class="noscore" src="Images/chimp.png" />
-                <img id="chimp5" class="noscore" src="Images/chimp.png" />
+                <img id="chimp1" class="noscore" src="../Images/chimp.png" />
+                <img id="chimp2" class="noscore" src="../Images/chimp.png" />
+                <img id="chimp3" class="noscore" src="../Images/chimp.png" />
+                <img id="chimp4" class="noscore" src="../Images/chimp.png" />
+                <img id="chimp5" class="noscore" src="../Images/chimp.png" />
             </figure>
             <div id="result" style="line-height:60px;font-size:40px;color:brown;background-color:lightyellow;text-align:center;"></div>
         </article>

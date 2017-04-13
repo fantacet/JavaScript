@@ -3,6 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>JavaScript作業</title>
+    <link href="../Style1.css" rel="stylesheet" />
+    <style>
+        article {
+            text-align: center;
+            font-size: 34px;
+        }
+
+        select {
+            font-size: 24px;
+        }
+    </style>
     <script type="text/javascript">
         window.onload = function () {
             CreateYear();
@@ -19,7 +30,6 @@
                 opt.setAttribute("value", i);
                 var optname = document.createTextNode(i);
                 opt.appendChild(optname);
-
                 document.getElementById('idSelectYear').appendChild(opt);
             }
         }
@@ -30,7 +40,6 @@
                 opt.setAttribute("value", i);
                 var optname = document.createTextNode(i);
                 opt.appendChild(optname);
-
                 document.getElementById('idSelectMonth').appendChild(opt);
             }
         }
@@ -53,60 +62,68 @@
             }
         }
 
+        //顯示選取日期結果
         function ShowDateResult() {
             var theYear = document.getElementById('idSelectYear').value;
             var theMonth = document.getElementById('idSelectMonth').value;
             var theDate = document.getElementById('idSelectDate').value;
             document.getElementById("idDateResult").textContent = "選取的日期是" + theYear + "年" + theMonth
                 + "月" + theDate + "日";
-            var d = new Date(theYear, theMonth-1, theDate);
-            
-            //document.getElementById("News").setAttribute("src",
-            //    "https://www.google.com/custom?q=location%3ATaiwan&hl=zh-TW&gl=tw&as_drrb=b&authuser=0&source=lnt&tbs=cdr%3A1%2Ccd_min%3A"
-            //    + theMonth + "%2F" + theDate + "%2F" + theYear + "%2Ccd_max%3A" + theMonth + "%2F"
-            //    + theDate + "%2F" + theYear + "&tbm=nws");
-            //document.getElementById("News").setAttribute("src", "http://www.chinatimes.com/history-by-date/" +
-            //    theYear + "-" + theMonth + "-" + theDate + "-2601");
-            document.getElementById("News").setAttribute("src", "http://www.chinatimes.com/history-by-date/" + d.getFullYear() + "-" +
-                (d.getMonth() + 1) + "-" + d.getDate() + "-2601");  //Todo 個數前少了0
-            alert(d.to.toDateString().split("T")[0]);
+            var selectedDate = new Date(theYear, theMonth-1, theDate);
+
+            ShowNewsOfTheDay(selectedDate);
+        }
+
+        //查詢所選日期的中時電子報的新聞
+        function ShowNewsOfTheDay(d) {
+             if (d.getTime()>new Date().getTime()) {
+                 document.getElementById("attentionLabel").textContent = "在時光機發明之前，您無法查閱未來的新聞。";
+                 document.getElementById("News").setAttribute("src", "");
+            }
+             else {
+                 document.getElementById("attentionLabel").textContent = "";
+                document.getElementById("News").setAttribute("src", "http://www.chinatimes.com/history-by-date/" +
+                    FormateDateString(d) + "-2601");
+                }
+         }
+
+        //將日期變成yyyy-MM-dd格式的字串
+        function FormateDateString(d) {
+            var YearStr = d.getFullYear();
+            var MonthStr = d.getMonth() + 1;
+            if (MonthStr<10) {
+                MonthStr = "0" + MonthStr;
+            }
+            var DateStr = d.getDate();
+            if (DateStr<10) {
+                DateStr = "0" + DateStr;
+            }
+            return YearStr + "-" + MonthStr + "-" + DateStr;
         }
 
     </script>
-
-    <link href="Style1.css" rel="stylesheet" />
-    <style>
-       article{
-           text-align:center;
-           font-size:34px;
-       }
-       select{
-           font-size:24px;
-       }
-       
-    </style>
 </head>
 <body>
     <header>
         <hgroup>
             <h1>JavaScript作業集合</h1>
-            <h2 onload="Today()"></h2>
+            <h2></h2>
         </hgroup>
         <nav>
             <ul>
-                <li><a href="Index.html">回到首頁</a></li>
-                <li><a href="Homework1.html">九九乘法</a></li>
-                <li><a href="Homework2.html">欄位驗證</a></li>
-                <li><a href="Homework3.html">評點製作</a></li>
-                <li><a href="Homework4.html">廣告輪播</a></li>
-                <li><a href="Homework5.html">日曆製作</a></li>
+                <li><a href="../Index.html">回到首頁</a></li>
+                <li><a href="../pages/Homework1.html">九九乘法</a></li>
+                <li><a href="../pages/Homework2.html">欄位驗證</a></li>
+                <li><a href="../pages/Homework3.html">評點製作</a></li>
+                <li><a href="../pages/Homework4.html">廣告輪播</a></li>
+                <li><a href="#">日曆製作</a></li>
             </ul>
-        </nav>
+        </nav>,
     </header>
     <section>
         <figure class="seperator">
-            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
-            <img src="Images/fan.png" /><img src="Images/fan.png" /><img src="Images/fan.png" />
+            <img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" />
+            <img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" />
         </figure>
         <h2 class="HWTitle">日曆製作</h2>
         <article>
@@ -114,8 +131,8 @@
             <select id="idSelectMonth"></select>
             <select id="idSelectDate"></select>
             <p id="idDateResult"></p>
-            <iframe id="News" style="width:100%; height:900px;"></iframe>
-
+            <label id="attentionLabel">&uarr;&uarr;&uarr;選擇日期以顯示歷史新聞。&uarr;&uarr;&uarr;</label>
+            <iframe id="News" style="width:90%; height:900px;"></iframe>
         </article>
     </section>
 </body>

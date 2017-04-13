@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript作業</title>
+    <link href="../Style1.css" rel="stylesheet" />
+    <style>
+        #SlideContainer {width: 100%; margin: auto; text-align: center;} 
+        #SlideContainer img {width: 800px; height: 600px; border: 5px solid darkgoldenrod; border-radius: 10px; }
+        .SlideControl { cursor: pointer; display:inline-block; background-color: white; border-radius: 20px; user-select:none; width:5em;}
+        .Hidden { display: none; }
+        .Show{ display:inline; }
+        #SlideContainer ul { padding:0;} 
+        #SlideContainer ul li { display: inline-block; border-radius: 50px; width: 30px; height: 30px; }
+        .liSlideTag { background-color:darkgreen; }
+        .liSlideTag-HighLight { background-color:white; }
+    </style>
+    <script>
+        var slideIndex = 0;
+        var slideLen;
+        var slidePlayInterval = 2000;
+        window.onload = function () {
+            //取得照片數量
+            slideLen = document.querySelectorAll("#SlideContainer img").length;
+
+            //動態生成照片下的標籤
+            for (var i = 0; i < slideLen; i++) {
+                var SlideTag = document.createElement("li");
+                SlideTag.setAttribute("id", "slideTag" + i);
+                SlideTag.setAttribute("class", "liSlideTag");
+                SlideTag.textContent = i + 1;
+                document.getElementById("ulSlideTag").insertAdjacentElement("beforeend", SlideTag);
+                //為標籤加上mouseover事件
+                document.getElementById("slideTag" + i).addEventListener("mouseover", ChangeSlideIndex);
+            }
+            
+            //為投影片播放控制按鈕加上事件
+            document.getElementById("btnToPrevious").addEventListener("click", ToPreviousSlide);
+            document.getElementById("btnToNext").addEventListener("click", ToNextSlide);
+            document.getElementById("btnPlayControl").addEventListener("click", ChangePlayState);
+
+            //播放投影片
+            ShowSlide(slideIndex);
+    }
+
+        //設定投影片播放時間
+        var SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+
+        //函數:播放投影片
+        function ShowSlide(index) {
+            //假如有正在播放的投影片，先去除
+            if (document.querySelector(".Show")) {
+                document.querySelector(".Show").setAttribute("class", "Hidden");
+                document.querySelector(".liSlideTag-HighLight").setAttribute("class", "liSlideTag");
+            }
+            //播放slideIndex對應的投影片
+            document.querySelectorAll("#SlideContainer img")[index].setAttribute("class", "Show");
+            document.querySelectorAll("#SlideContainer ul li")[index].setAttribute("class", "liSlideTag-HighLight");
+        }
+        
+        //函數:改變slideIndex並播放
+        function ChangeSlideIndex() {
+            slideIndex = event.target.id.substr(-1);
+            window.clearInterval(SlideShowTimer);
+            ShowSlide(slideIndex);
+            SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+        }
+
+        //播放前一張
+        function ToPreviousSlide() {
+            window.clearInterval(SlideShowTimer);
+            slideIndex = (slideIndex + slideLen - 1) % slideLen;
+            ShowSlide(slideIndex);
+            SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+        }
+
+        //播放下一張
+        function ToNextSlide() {
+            window.clearInterval(SlideShowTimer);
+            slideIndex = (slideIndex + 1) % slideLen;
+            ShowSlide(slideIndex);
+            SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+        }
+
+        //播放控制
+        function ChangePlayState() {
+            if (document.getElementById("btnPlayControl").textContent == "停止播放") {
+                window.clearInterval(SlideShowTimer);
+                document.getElementById("btnPlayControl").textContent = "繼續播放";
+            }
+            else if (document.getElementById("btnPlayControl").textContent == "繼續播放") {
+                SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+                document.getElementById("btnPlayControl").textContent = "停止播放";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>JavaScript作業集合</h1>
+            <h2></h2>
+        </hgroup>
+        <nav>
+            <ul>
+                <li><a href="../Index.html">回到首頁</a></li>
+                <li><a href="../pages/Homework1.html">九九乘法</a></li>
+                <li><a href="../pages/Homework2.html">欄位驗證</a></li>
+                <li><a href="../pages/Homework3.html">評點製作</a></li>
+                <li><a href="#">廣告輪播</a></li>
+                <li><a href="../pages/Homework5.html">日曆製作</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <figure class="seperator">
+            <img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" />
+            <img src="../Images/fan.png" /><img src="../Images/fan.png" /><img src="../Images/fan.png" />
+        </figure>
+        <h2 class="HWTitle">廣告輪播</h2>
+        <article>
+            <div id="SlideContainer">
+                <img class="Hidden" src="../Images/slide1.jpg" />
+                <img class="Hidden" src="../Images/slide2.jpg" />
+                <img class="Hidden" src="../Images/slide3.jpg" />
+                <img class="Hidden" src="../Images/slide4.jpg" />
+                <img class="Hidden" src="../Images/slide5.jpg" />
+                <ul id="ulSlideTag"></ul>
+                <div>
+                    <a id="btnToPrevious" class="SlideControl">前一張</a>
+                    <a id="btnPlayControl" class="SlideControl">停止播放</a>
+                    <a id="btnToNext" class="SlideControl">後一張</a>
+                </div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>

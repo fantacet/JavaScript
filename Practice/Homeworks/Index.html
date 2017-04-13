@@ -8,10 +8,12 @@
             dateNow = new Date();
             document.getElementById("timeNow").textContent = dateNow;
         }
-        window.onload = Today;
+        window.onload = function () {
+            Today();
+        }
+
     </script>
     <link href="Style1.css" rel="stylesheet" />
-    
 </head>
 <body>
     <header>
@@ -21,12 +23,12 @@
         </hgroup>
         <nav>
             <ul>
-                <li><a href="Index.html">回到首頁</a></li>
-                <li><a href="Homework1.html">九九乘法</a></li>
-                <li><a href="Homework2.html">欄位驗證</a></li>
-                <li><a href="Homework3.html">評點製作</a></li>
-                <li><a href="Homework4.html">廣告輪播</a></li>
-                <li><a href="Homework5.html">日曆製作</a></li>
+                <li><a href="#">回到首頁</a></li>
+                <li><a href="pages/Homework1.html">九九乘法</a></li>
+                <li><a href="pages/Homework2.html">欄位驗證</a></li>
+                <li><a href="pages/Homework3.html">評點製作</a></li>
+                <li><a href="pages/Homework4.html">廣告輪播</a></li>
+                <li><a href="pages/Homework5.html">日曆製作</a></li>
             </ul>
         </nav>
     </header>
@@ -36,8 +38,10 @@
             <img src="Images/fan.png"/><img src="Images/fan.png" /><img src="Images/fan.png" />
         </figure>
         <h2 id="timeNow" style="text-align:center;"></h2>
-        <article>
-            
+        <article style="text-align:center;">
+            <img src="Images/worship.gif" />
+            <img style="width:500px;background-color:#efffab;" src="Images/javascript.png" />
+            <img style="transform:scale(-1,1);" src="Images/worship.gif" />
         </article>
     </section>
 </body>

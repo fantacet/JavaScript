@@ -3,6 +3,22 @@
 <head>
     <meta charset="utf-8" lang="zh"/>
     <title>JavaScript作業</title>
+    <link href="Style1.css" rel="stylesheet" />
+    <style>
+        #js {
+            width: 500px;
+            filter: drop-shadow(0 0 20px white) contrast(120%);
+            transition-property: all;
+            transition-duration: 1s;
+            transition-timing-function:ease-in-out;
+        }
+        #js:active {
+            width: 500px;
+            filter: drop-shadow(0 0 150px white) contrast(120%);
+            transform: translateY(-25px);
+        }
+
+    </style>
     <script>
         function Today() {
             dateNow = new Date();
@@ -12,8 +28,7 @@
             Today();
         }
 
-    </script>
-    <link href="Style1.css" rel="stylesheet" />
+</script>
 </head>
 <body>
     <header>
@@ -40,7 +55,7 @@
         <h2 id="timeNow" style="text-align:center;"></h2>
         <article style="text-align:center;">
             <img src="Images/worship.gif" />
-            <img style="width:500px;background-color:#efffab;" src="Images/javascript.png" />
+            <img id="js" src="Images/javascript.png" />
             <img style="transform:scale(-1,1);" src="Images/worship.gif" />
         </article>
     </section>

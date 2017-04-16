@@ -15,10 +15,10 @@
             var nameX = document.getElementById("name1").value;
             var reg = /^[\u4E00-\u9FFF]{2,}$/;
             if (reg.test(nameX)) {
-                document.getElementById("nameCheckResult").innerHTML = "<img src= 'Images/ok.png'/>正確!";
+                document.getElementById("nameCheckResult").innerHTML = "<img src= '../Images/ok.png'/>正確!";
             }
             else {
-                document.getElementById("nameCheckResult").innerHTML = "<img src= 'Images/warning.png'/>錯誤!";
+                document.getElementById("nameCheckResult").innerHTML = "<img src= '../Images/warning.png'/>錯誤!";
             }
         }
 
@@ -26,10 +26,10 @@
             var passwordX = document.getElementById("password1").value;
             var reg = /^(?!.*[\s])(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$ %^&*]).{6,}$/;
             if (reg.test(passwordX)) {
-                document.getElementById("passwordCheckResult").innerHTML = "<img src= 'Images/ok.png'/>正確!";
+                document.getElementById("passwordCheckResult").innerHTML = "<img src= '../Images/ok.png'/>正確!";
             }
             else {
-                document.getElementById("passwordCheckResult").innerHTML = "<img src= 'Images/warning.png'/>錯誤!";
+                document.getElementById("passwordCheckResult").innerHTML = "<img src= '../Images/warning.png'/>錯誤!";
             }
         }
 
@@ -38,10 +38,10 @@
             var dateObj = new Date(dateX);
             var reg = /^[0-9]{4}\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$/;
             if (reg.test(dateX) && (dateObj.getMonth() + 1) == dateX.split("/")[1]) {
-                document.getElementById("dateCheckResult").innerHTML = "<img src= 'Images/ok.png'/>正確!";
+                document.getElementById("dateCheckResult").innerHTML = "<img src= '../Images/ok.png'/>正確!";
             }
             else {
-                document.getElementById("dateCheckResult").innerHTML = "<img src= 'Images/warning.png'/>錯誤!";
+                document.getElementById("dateCheckResult").innerHTML = "<img src= '../Images/warning.png'/>錯誤!";
             }
         }
     </script>

@@ -5,11 +5,15 @@
     <title>JavaScript作業</title>
     <link href="../Style1.css" rel="stylesheet" />
     <style>
+        @keyframes slideFadeIn {
+            0% {opacity:1;filter:grayscale(1) blur(2px);}
+            100% {opacity: 1;filter: grayscale(0);}
+        }
         #SlideContainer {width: 100%; margin: auto; text-align: center;} 
-        #SlideContainer img {width: 800px; height: 600px; border: 5px solid darkgoldenrod; border-radius: 10px; }
+        #SlideContainer img { width: 800px; height: 600px; border: 5px solid darkgoldenrod; border-radius: 10px; }
         .SlideControl { cursor: pointer; display:inline-block; background-color: white; border-radius: 20px; user-select:none; width:5em;}
-        .Hidden { display: none; }
-        .Show{ display:inline; }
+        .Hidden {display: none; }
+        .Show {display: inline; animation: 1s ease-out 0s 1 slideFadeIn;}
         #SlideContainer ul { padding:0;} 
         #SlideContainer ul li { display: inline-block; border-radius: 50px; width: 30px; height: 30px; }
         .liSlideTag { background-color:darkgreen; }
@@ -18,7 +22,8 @@
     <script>
         var slideIndex = 0;
         var slideLen;
-        var slidePlayInterval = 2000;
+        var slidePlayInterval = 3000;
+        var IsSlidePlaying = true;
         window.onload = function () {
             //取得照片數量
             slideLen = document.querySelectorAll("#SlideContainer img").length;
@@ -41,13 +46,22 @@
 
             //播放投影片
             ShowSlide(slideIndex);
-    }
+        }
 
         //設定投影片播放時間
-        var SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+        var SlideShowTimer = window.setInterval(PlaySlide, slidePlayInterval);
+
+        //檢查是否為播放狀態，若是則播放下一張
+        function PlaySlide() {
+            if (IsSlidePlaying) {
+                ToNextSlide();
+            }
+        }
 
         //函數:播放投影片
         function ShowSlide(index) {
+            //先停止播放計時
+            window.clearInterval(SlideShowTimer);
             //假如有正在播放的投影片，先去除
             if (document.querySelector(".Show")) {
                 document.querySelector(".Show").setAttribute("class", "Hidden");
@@ -56,41 +70,37 @@
             //播放slideIndex對應的投影片
             document.querySelectorAll("#SlideContainer img")[index].setAttribute("class", "Show");
             document.querySelectorAll("#SlideContainer ul li")[index].setAttribute("class", "liSlideTag-HighLight");
+            //重設播放計時，以避免選擇某張圖片後短時間內立刻跳到下一張
+            SlideShowTimer = window.setInterval(PlaySlide, slidePlayInterval);
         }
         
         //函數:改變slideIndex並播放
         function ChangeSlideIndex() {
             slideIndex = event.target.id.substr(-1);
-            window.clearInterval(SlideShowTimer);
             ShowSlide(slideIndex);
-            SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
         }
 
         //播放前一張
         function ToPreviousSlide() {
-            window.clearInterval(SlideShowTimer);
             slideIndex = (slideIndex + slideLen - 1) % slideLen;
             ShowSlide(slideIndex);
-            SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
         }
 
         //播放下一張
         function ToNextSlide() {
-            window.clearInterval(SlideShowTimer);
             slideIndex = (slideIndex + 1) % slideLen;
             ShowSlide(slideIndex);
-            SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
         }
 
-        //播放控制
+        //播放控制: 改變播放狀態
         function ChangePlayState() {
-            if (document.getElementById("btnPlayControl").textContent == "停止播放") {
-                window.clearInterval(SlideShowTimer);
+            if (IsSlidePlaying) {
                 document.getElementById("btnPlayControl").textContent = "繼續播放";
+                IsSlidePlaying = false;
             }
-            else if (document.getElementById("btnPlayControl").textContent == "繼續播放") {
-                SlideShowTimer = window.setInterval(ToNextSlide, slidePlayInterval);
+            else {
                 document.getElementById("btnPlayControl").textContent = "停止播放";
+                IsSlidePlaying = true;
             }
         }
     </script>
